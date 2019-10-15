@@ -21,7 +21,6 @@ public class MyControllerTest extends PayloadSpringBootStarterTestApplicationTes
                 .andExpect(status().isOk())
                 .andReturn();
         JSONObject jsonObject = new JSONObject(result.getResponse().getContentAsString());
-        System.out.println("jsonObject = " + jsonObject);
         Assert.assertEquals(jsonObject.getInt("code"), 1);
         ObjectMapper objectMapper = new ObjectMapper();
         User payload = objectMapper.readValue(jsonObject.getString("payload"), User.class);
@@ -31,16 +30,16 @@ public class MyControllerTest extends PayloadSpringBootStarterTestApplicationTes
 
     @Test
     public void getErrorOfHtml() throws Exception {
-        MvcResult result = super.mockMvc.perform(MockMvcRequestBuilders.get("/users/0").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+        MvcResult result = super.mockMvc.perform(MockMvcRequestBuilders.get("/users/0")
+                .contentType(MediaType.TEXT_HTML))
                 .andReturn();
-
+        Assert.assertNotNull(result);
     }
 
     @Test
     public void getErrorOfJson() throws Exception {
-        MvcResult result = super.mockMvc.perform(MockMvcRequestBuilders.get("/users/0").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+        MvcResult result = super.mockMvc.perform(MockMvcRequestBuilders.get("/users/0")
+                .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         System.out.println("result = " + result.getResponse().getContentAsString());
     }

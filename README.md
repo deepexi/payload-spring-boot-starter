@@ -34,7 +34,7 @@ deepexi.payload.error.enabled=false
    
   - 使用
 
-payload主要依靠以下两个注解实现相应的功能
+payload-starter主要依靠以下两个注解实现相应的功能，对这两个注解有相应的Handler处理。
 
 ```java
 @Payload
@@ -58,7 +58,7 @@ Controller *@RestController* 类上使用 **@Payload** 注解，自动对返回�
 
 ##### 异常处理
 
-继承RuntimeException类，并加上 **@BizErrorResponseStatus("00000-0000-0001")** 注解，值为自定义的错误码。payload-starter会对其进行
+继承RuntimeException类，并加上 **@BizErrorResponseStatus("00000-0000-0001")** 注解，值为自定义的错误码。
 格式如下
 ```json
 {

@@ -14,6 +14,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,9 +27,18 @@ public class PayloadAutoConfiguration implements InitializingBean {
     @Autowired
     private RequestMappingHandlerAdapter adapter;
 
+    @Autowired
+    private PayloadProperties payloadProperties;
+
+    @PostConstruct
+    public void setPayloadProperties(){
+        RequestResponseBodyMethodProcessorProxy.payloadProperties = this.payloadProperties;
+    }
+
+
     @Override
     public void afterPropertiesSet() {
-        List<HandlerMethodReturnValueHandler> handlers = new ArrayList<>(adapter.getReturnValueHandlers());
+        List<HandlerMethodReturnValueHandler> handlers = new ArrayList<>(this.adapter.getReturnValueHandlers());
         for (HandlerMethodReturnValueHandler item : handlers) {
             int index = handlers.indexOf(item);
             if (RequestResponseBodyMethodProcessor.class.isAssignableFrom(item.getClass())) {
@@ -42,6 +52,7 @@ public class PayloadAutoConfiguration implements InitializingBean {
 
     private static class RequestResponseBodyMethodProcessorProxy implements HandlerMethodReturnValueHandler {
         private RequestResponseBodyMethodProcessor delegate;
+        private static PayloadProperties payloadProperties;
 
         public RequestResponseBodyMethodProcessorProxy(RequestResponseBodyMethodProcessor delegate) {
             this.delegate = delegate;
@@ -65,7 +76,7 @@ public class PayloadAutoConfiguration implements InitializingBean {
         public void handleReturnValue(Object o, MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest) throws Exception {
             Map<String, Object> result = new HashMap<>();
             result.put("success", true);
-            result.put("code", "1");
+            result.put("code", payloadProperties.getCode());
             result.put("payload", o);
 
             delegate.handleReturnValue(result, methodParameter, modelAndViewContainer, nativeWebRequest);

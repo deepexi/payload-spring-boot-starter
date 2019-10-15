@@ -1,0 +1,17 @@
+{
+  "properties": [
+    {
+      "name": "deepexi.payload.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable basic payload.",
+      "defaultValue": true
+    },
+    {
+      "name": "deepexi.payload.error.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable payload of error.",
+      "defaultValue": false
+    }
+
+  ]
+}

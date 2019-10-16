@@ -21,7 +21,9 @@ public class MyControllerTest extends PayloadSpringBootStarterTestApplicationTes
                 .andExpect(status().isOk())
                 .andReturn();
         JSONObject jsonObject = new JSONObject(result.getResponse().getContentAsString());
-        Assert.assertEquals(jsonObject.getInt("code"), 1);
+        System.out.println("jsonObject = " + jsonObject);
+
+        Assert.assertEquals(jsonObject.getString("code"), "1");
         ObjectMapper objectMapper = new ObjectMapper();
         User payload = objectMapper.readValue(jsonObject.getString("payload"), User.class);
         Assert.assertNotNull(payload);

@@ -76,7 +76,8 @@ public class PayloadAutoConfiguration implements InitializingBean {
         public void handleReturnValue(Object o, MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest) throws Exception {
             Map<String, Object> result = new HashMap<>();
             result.put("success", true);
-            result.put("code", payloadProperties.getCode());
+            String code = payloadProperties.getCode();
+            result.put("code", code.trim().length() == 0 ? "1" : code);
             result.put("payload", o);
 
             delegate.handleReturnValue(result, methodParameter, modelAndViewContainer, nativeWebRequest);

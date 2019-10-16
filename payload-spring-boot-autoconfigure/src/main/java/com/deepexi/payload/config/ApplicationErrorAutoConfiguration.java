@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Component
 @EnableConfigurationProperties(PayloadProperties.class)
-@ConditionalOnProperty(prefix = "deepexi.payload.error", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "payload.error", name = "enabled", havingValue = "true")
 public class ApplicationErrorAutoConfiguration extends DefaultErrorAttributes {
 
     @Autowired

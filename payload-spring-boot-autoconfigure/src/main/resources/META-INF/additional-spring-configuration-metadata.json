@@ -1,19 +1,19 @@
 {
   "properties": [
     {
-      "name": "deepexi.payload.enabled",
+      "name": "payload.enabled",
       "type": "java.lang.Boolean",
       "description": "Whether to enable basic payload.",
       "defaultValue": true
     },
     {
-      "name": "deepexi.payload.error.enabled",
+      "name": "payload.error.enabled",
       "type": "java.lang.Boolean",
       "description": "Whether to enable payload of error.",
       "defaultValue": false
     },
     {
-      "name": "deepexi.payload.code",
+      "name": "payload.code",
       "type": "java.lang.String",
       "description": "Response success status code.",
       "sourceType": "com.deepexi.payload.config.PayloadProperties",

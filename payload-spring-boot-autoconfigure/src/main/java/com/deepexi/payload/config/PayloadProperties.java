@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @NoArgsConstructor
-@ConfigurationProperties(prefix = "deepexi.payload")
+@ConfigurationProperties(prefix = "payload")
 public class PayloadProperties {
 
     private String code = "1";

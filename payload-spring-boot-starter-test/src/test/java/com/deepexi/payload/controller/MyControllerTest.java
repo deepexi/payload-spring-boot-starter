@@ -21,8 +21,6 @@ public class MyControllerTest extends PayloadSpringBootStarterTestApplicationTes
                 .andExpect(status().isOk())
                 .andReturn();
         JSONObject jsonObject = new JSONObject(result.getResponse().getContentAsString());
-        System.out.println("jsonObject = " + jsonObject);
-
         Assert.assertEquals(jsonObject.getString("code"), "1");
         ObjectMapper objectMapper = new ObjectMapper();
         User payload = objectMapper.readValue(jsonObject.getString("payload"), User.class);
@@ -43,6 +41,5 @@ public class MyControllerTest extends PayloadSpringBootStarterTestApplicationTes
         MvcResult result = super.mockMvc.perform(MockMvcRequestBuilders.get("/users/0")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
-        System.out.println("result = " + result.getResponse().getContentAsString());
     }
 }

@@ -8,6 +8,7 @@
     <artifactId>payload-spring-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <url>https://github.com/deepexi/payload-spring-boot</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

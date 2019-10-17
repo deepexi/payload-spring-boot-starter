@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.deepexi</groupId>
-    <artifactId>com.deepexi.payload-spring-boot</artifactId>
+    <artifactId>payload-spring-boot-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <url>https://github.com/deepexi/com.deepexi.payload-spring-boot</url>
+    <url>https://github.com/deepexi/payload-spring-boot-starter.git</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -36,8 +36,8 @@
     </developers>
 
     <scm>
-        <connection>https://github.com/deepexi/com.deepexi.payload-spring-boot</connection>
-        <developerConnection>https://github.com/deepexi/com.deepexi.payload-spring-boot.git</developerConnection>
+        <connection>https://github.com/deepexi/payload-spring-boot-starter</connection>
+        <developerConnection>https://github.com/deepexi/payload-spring-boot-starter.git</developerConnection>
         <url>https://github.com/deepexi</url>
     </scm>
 

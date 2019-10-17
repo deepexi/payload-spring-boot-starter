@@ -1,4 +1,4 @@
-# com.deepexi.payload-spring-boot
+# payload-spring-boot-starter
 [![Build Status](https://travis-ci.org/deepexi/com.deepexi.payload-spring-boot-starter.svg?branch=master)](https://travis-ci.org/deepexi/com.deepexi.payload-spring-boot-starter)  [![codecov](https://codecov.io/gh/deepexi/com.deepexi.payload-spring-boot-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/deepexi/com.deepexi.payload-spring-boot-starter)
 
 将项目中统一结果返回对象的相关内容抽离出来，封装成一个独立的starter，方便在Spring Boot至使用。
@@ -10,7 +10,7 @@
 
 ## Getting Started
   实现自定义的Converter，然后引入starter坐标后，调用ConverterUtils的方法即可进行转化，
-  具体使用参考[Test Demo](https://github.com/deepexi/com.deepexi.payload-spring-boot-starter/tree/master/src/test)
+  具体使用参考[Test Demo](https://github.com/deepexi/payload-spring-boot-starter/tree/master/src/test/java/com/deepexi/payload)
   
   目前还在申请发布至Maven仓库，需要自行安装到本地仓库。
   
@@ -19,7 +19,7 @@
 ```xml
    <dependency>
      <groupId>com.deepexi</groupId>
-     <artifactId>com.deepexi.payload-spring-boot-starter</artifactId>
+     <artifactId>payload-spring-boot-starter</artifactId>
      <version>0.0.1-SNAPSHOT</version>
    </dependency>
 ```

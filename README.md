@@ -1,5 +1,5 @@
-# payload-spring-boot
-[![Build Status](https://travis-ci.org/deepexi/payload-spring-boot-starter.svg?branch=master)](https://travis-ci.org/deepexi/payload-spring-boot-starter)  [![codecov](https://codecov.io/gh/deepexi/payload-spring-boot-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/deepexi/payload-spring-boot-starter)
+# com.deepexi.payload-spring-boot
+[![Build Status](https://travis-ci.org/deepexi/com.deepexi.payload-spring-boot-starter.svg?branch=master)](https://travis-ci.org/deepexi/com.deepexi.payload-spring-boot-starter)  [![codecov](https://codecov.io/gh/deepexi/com.deepexi.payload-spring-boot-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/deepexi/com.deepexi.payload-spring-boot-starter)
 
 将项目中统一结果返回对象的相关内容抽离出来，封装成一个独立的starter，方便在Spring Boot至使用。
 
@@ -10,7 +10,7 @@
 
 ## Getting Started
   实现自定义的Converter，然后引入starter坐标后，调用ConverterUtils的方法即可进行转化，
-  具体使用参考[Test Demo](https://github.com/deepexi/payload-spring-boot-starter/tree/master/payload-spring-boot-starter-test)
+  具体使用参考[Test Demo](https://github.com/deepexi/com.deepexi.payload-spring-boot-starter/tree/master/src/test)
   
   目前还在申请发布至Maven仓库，需要自行安装到本地仓库。
   
@@ -19,7 +19,7 @@
 ```xml
    <dependency>
      <groupId>com.deepexi</groupId>
-     <artifactId>payload-spring-boot-starter</artifactId>
+     <artifactId>com.deepexi.payload-spring-boot-starter</artifactId>
      <version>0.0.1-SNAPSHOT</version>
    </dependency>
 ```
@@ -28,18 +28,18 @@
   
 ```properties
 #开启payload统一返回结果，不配置默认开启：true
-deepexi.payload.enabled=true
+deepexi.com.deepexi.payload.enabled=true
 
 #开启payload统一异常返回结果，不配做默认关闭：false  
-deepexi.payload.error.enabled=false 
+deepexi.com.deepexi.payload.error.enabled=false 
 
 #自定义成功返回码 默认 1
-deepexi.payload.code=1
+deepexi.com.deepexi.payload.code=1
 ```
    
 ### 使用
 
-payload-starter主要依靠以下两个注解实现相应的功能，对这两个注解有相应的Handler处理。
+com.deepexi.payload-starter主要依靠以下两个注解实现相应的功能，对这两个注解有相应的Handler处理。
 
 ```java
 @Payload
@@ -52,7 +52,7 @@ Controller *@RestController* 类上使用 **@Payload** 注解，自动对返回�
 ```json
 {
   "code": "1",
-  "payload": {
+  "com.deepexi.payload": {
      "k1": "v1",
      "k2": "v2"
   },

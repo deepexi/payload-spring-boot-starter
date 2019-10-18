@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 public class PayloadSpringBootStarterTestApplicationTests {
 
@@ -22,9 +22,8 @@ public class PayloadSpringBootStarterTestApplicationTests {
     protected MockMvc mockMvc;
 
     @Before
-    public void setUp() throws Exception{
-        //MockMvcBuilders.webAppContextSetup(WebApplicationContext context)：指定WebApplicationContext，将会从该上下文获取相应的控制器并得到相应的MockMvc；
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();//建议使用这种
+    public void setUp() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
     @Test

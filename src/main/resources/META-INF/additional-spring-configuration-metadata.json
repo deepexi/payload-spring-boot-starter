@@ -3,21 +3,35 @@
     {
       "name": "payload.enabled",
       "type": "java.lang.Boolean",
-      "description": "Whether to enable basic payload.",
+      "description": "是否开启payload.",
       "defaultValue": true
     },
     {
       "name": "payload.error.enabled",
       "type": "java.lang.Boolean",
-      "description": "Whether to enable payload of error.",
+      "description": "是否开启统一异常处理.",
       "defaultValue": false
     },
     {
       "name": "payload.code",
       "type": "java.lang.String",
-      "description": "Response success status code.",
+      "description": "正常返回码.",
       "sourceType": "com.deepexi.payload.config.PayloadProperties",
       "defaultValue": "1"
+    },
+    {
+      "name": "payload.biz-error-code",
+      "type": "java.lang.String",
+      "description": "义业务错误码.",
+      "sourceType": "com.deepexi.payload.config.PayloadProperties",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "payload.system-error-code",
+      "type": "java.lang.String",
+      "description": "系统错误码.",
+      "sourceType": "com.deepexi.payload.config.PayloadProperties",
+      "defaultValue": "-2"
     }
 
   ]

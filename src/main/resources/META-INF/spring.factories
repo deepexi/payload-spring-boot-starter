@@ -1,3 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.deepexi.payload.config.PayloadAutoConfiguration,\
-com.deepexi.payload.config.ApplicationErrorAutoConfiguration
+com.deepexi.payload.config.PayloadAutoConfiguration

@@ -17,8 +17,12 @@ public class MyController {
     public User get(@PathVariable Integer id) {
         if (id == 1) {
             return new User(1, "张三", 18);
+        } else if(id ==0){
+            throw new RuntimeException();
+        } else {
+            throw new CustomerException();
         }
-        throw new CustomerException();
+
     }
 
 }

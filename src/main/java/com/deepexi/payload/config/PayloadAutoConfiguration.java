@@ -34,7 +34,6 @@ public class PayloadAutoConfiguration implements InitializingBean {
         RequestResponseBodyMethodProcessorProxy.payloadProperties = this.payloadProperties;
     }
 
-
     @Override
     public void afterPropertiesSet() {
         List<HandlerMethodReturnValueHandler> handlers = new ArrayList<>(this.adapter.getReturnValueHandlers());

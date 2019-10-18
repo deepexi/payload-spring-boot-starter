@@ -4,23 +4,24 @@ import com.deepexi.payload.annotation.BizErrorResponseStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Component
-@EnableConfigurationProperties(PayloadProperties.class)
+@Configuration
 @ConditionalOnProperty(prefix = "payload.error", name = "enabled", havingValue = "true")
 public class ApplicationErrorAutoConfiguration extends DefaultErrorAttributes {
 
+    private PayloadProperties payloadProperties;
+
     @Autowired
-    public ApplicationErrorAutoConfiguration(ServerProperties serverProperties) {
+    public ApplicationErrorAutoConfiguration(ServerProperties serverProperties, PayloadProperties payloadProperties) {
         super(serverProperties.getError().isIncludeException());
+        this.payloadProperties = payloadProperties;
     }
 
     @Override
@@ -42,13 +43,13 @@ public class ApplicationErrorAutoConfiguration extends DefaultErrorAttributes {
                 if (annotation != null) {
                     resultAttributes.put("code", annotation.value());
                 } else {
-                    resultAttributes.put("code", "-1");
+                    resultAttributes.put("code", payloadProperties.getBizErrorCode());
                 }
             } else {
-                resultAttributes.put("code", "-1");
+                resultAttributes.put("code", payloadProperties.getBizErrorCode());
             }
         } else {
-            resultAttributes.put("code", "-2");
+            resultAttributes.put("code", payloadProperties.getSystemErrorCode());
         }
 
         if (includeStackTrace) {

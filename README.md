@@ -19,7 +19,7 @@
   
 ```xml
    <dependency>
-     <groupId>com.deepexi</groupId>
+     <groupId>com.github.deepexi</groupId>
      <artifactId>payload-spring-boot-starter</artifactId>
      <version>0.0.1-SNAPSHOT</version>
    </dependency>

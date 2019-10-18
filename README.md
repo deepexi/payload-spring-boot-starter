@@ -1,5 +1,6 @@
 # payload-spring-boot-starter
-[![Build Status](https://travis-ci.org/deepexi/payload-spring-boot-starter.svg?branch=master)](https://travis-ci.org/deepexi/payload-spring-boot-starter)  [![codecov](https://codecov.io/gh/deepexi/com.deepexi.payload-spring-boot-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/deepexi/com.deepexi.payload-spring-boot-starter)
+[![Build Status](https://travis-ci.org/deepexi/payload-spring-boot-starter.svg?branch=master)](https://travis-ci.org/deepexi/payload-spring-boot-starter)  [![codecov](https://codecov.io/gh/deepexi/payload-spring-boot-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/deepexi/payload-spring-boot-starter)
+
 
 将项目中统一结果返回对象的相关内容抽离出来，封装成一个独立的starter，方便在Spring Boot至使用。
 

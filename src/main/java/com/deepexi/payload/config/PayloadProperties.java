@@ -7,15 +7,21 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @NoArgsConstructor
-@ConfigurationProperties(prefix = "payload")
+@ConfigurationProperties(prefix = "mvc.payload")
 public class PayloadProperties {
 
     private String code = "1";
 
-    @NonNull
     private String bizErrorCode = "-1";
 
-    @NonNull
     private String systemErrorCode = "-2";
+
+    private boolean enableTrace = false;
+
+    private String successField = "success";
+
+    private String codeField = "code";
+
+    private String messageField = "message";
 
 }

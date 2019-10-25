@@ -13,7 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Configuration
-@ConditionalOnProperty(prefix = "payload.error", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "mvc.payload.error", name = "enabled", havingValue = "true")
 public class ApplicationErrorAutoConfiguration extends DefaultErrorAttributes {
 
     private PayloadProperties payloadProperties;
@@ -32,8 +32,8 @@ public class ApplicationErrorAutoConfiguration extends DefaultErrorAttributes {
         }
 
         Map<String, Object> resultAttributes = new LinkedHashMap<>();
-        resultAttributes.put("success", false);
-        resultAttributes.put("message", attributes.get("message"));
+        resultAttributes.put(payloadProperties.getSuccessField(), false);
+        resultAttributes.put(payloadProperties.getMessageField(), attributes.get("message"));
 
         int status = Integer.parseInt(attributes.get("status").toString());
         if (status >= 400 && status < 500) {
@@ -41,18 +41,18 @@ public class ApplicationErrorAutoConfiguration extends DefaultErrorAttributes {
             if (error != null) {
                 BizErrorResponseStatus annotation = AnnotationUtils.findAnnotation(error.getClass(), BizErrorResponseStatus.class);
                 if (annotation != null) {
-                    resultAttributes.put("code", annotation.value());
+                    resultAttributes.put(payloadProperties.getCodeField(), annotation.value());
                 } else {
-                    resultAttributes.put("code", payloadProperties.getBizErrorCode());
+                    resultAttributes.put(payloadProperties.getCodeField(), payloadProperties.getBizErrorCode());
                 }
             } else {
-                resultAttributes.put("code", payloadProperties.getBizErrorCode());
+                resultAttributes.put(payloadProperties.getCodeField(), payloadProperties.getBizErrorCode());
             }
         } else {
-            resultAttributes.put("code", payloadProperties.getSystemErrorCode());
+            resultAttributes.put(payloadProperties.getCodeField(), payloadProperties.getSystemErrorCode());
         }
 
-        if (includeStackTrace) {
+        if (payloadProperties.isEnableTrace() || includeStackTrace) {
             resultAttributes.put("stack", attributes.get("trace"));
         }
 

@@ -11,6 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,10 +20,9 @@ public class ApplicationErrorAutoConfigurationTest {
 
     private ServerProperties serverProperties = new ServerProperties();
     private PayloadProperties payloadProperties = new PayloadProperties();
+    private Map<String,String> payloadMap = new HashMap<>();
 
-//    private DefaultErrorAttributes errorAttributes = new DefaultErrorAttributes();
-
-    private DefaultErrorAttributes errorAttributes = new ApplicationErrorAutoConfiguration(serverProperties, payloadProperties);
+    private DefaultErrorAttributes errorAttributes = new PayloadErrorAutoConfiguration(serverProperties, payloadProperties, payloadMap);
 
     private MockHttpServletRequest request = new MockHttpServletRequest();
 
@@ -31,6 +31,9 @@ public class ApplicationErrorAutoConfigurationTest {
     @Before
     public void setUp()  {
         webRequest = new ServletWebRequest(this.request);
+        payloadMap.put("success", "success");
+        payloadMap.put("code", "code");
+        payloadMap.put("message", "message");
     }
 
     @Test
@@ -88,4 +91,6 @@ public class ApplicationErrorAutoConfigurationTest {
         Map<String, Object> attributes = this.errorAttributes.getErrorAttributes(this.webRequest, false);
         assertThat(attributes.get("code")).isEqualTo("-2");
     }
+
+
 }

@@ -24,11 +24,20 @@
 ```
      
 #### 配置
-见配置文件中 **mvc.payload** 属性的自动提示
+见配置文件中 **spring.mvc.payload** 属性的自动提示
+可自定义返回属性名称
+```yaml
+spring:
+  mvc:
+    payload:
+      payload-map:
+        code: code
+        success: success
+        message: message
+        payload: payload
+```
       
-payload-starter主要依靠以下两个注解实现相应的功能，对这两个注解有相应的Handler处理。
 
- 
  ##### 统一结果 @Payload
   
 Controller *@RestController* 类上使用 **@Payload** 注解，自动对返回的数据进行包装。

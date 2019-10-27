@@ -1,0 +1,8 @@
+spring:
+  mvc:
+    payload:
+      payload-map:
+        code: code
+        success: success
+        message: message
+        payload: payload

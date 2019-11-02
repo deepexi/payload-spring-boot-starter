@@ -13,10 +13,8 @@ public class PayloadPropertiesTest extends PayloadSpringBootStarterTestApplicati
     @Autowired
     private PayloadProperties payloadProperties;
 
-    @Value("${payload.system-error-code}")
     private String systemCode;
 
-    @Value("${payload.biz-error-code}")
     private String bizCode;
 
     @Test

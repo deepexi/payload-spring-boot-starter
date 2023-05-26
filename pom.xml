@@ -42,7 +42,7 @@
     </scm>
 
     <properties>
-        <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
+        <spring.boot.version>2.5.15</spring.boot.version>
         <lombok.version>1.18.10</lombok.version>
         <assertj.version>3.11.1</assertj.version>
     </properties>
